@@ -1,7 +1,8 @@
 {
-    "dark": [
+    "pallete": [
         {
             "name": "Dracula",
+            "variant": "dark",
             "style": {
                 "background": "#282A36",
                 "foreground": "#F8F8F2",
@@ -19,6 +20,7 @@
         },
         {
             "name": "Github Dark",
+            "variant": "dark",
             "style": {
                 "background": "#24292e",
                 "foreground": "#e1e4e8",
@@ -33,11 +35,10 @@
                 "notifications": "#2f363d",
                 "accent": "#f9826c"
             }
-        }
-    ],
-    "light": [
+        },
         {
             "name": "Github Light",
+            "variant": "light",
             "style": {
                 "background": "#F7F8FA",
                 "foreground": "#5B6168",
@@ -52,6 +53,7 @@
                 "notifications": "#DFECFE",
                 "accent": "#79CB60"
             }
-        },
-    ]
+        }
+    ],
+    "dims": {}
 }
