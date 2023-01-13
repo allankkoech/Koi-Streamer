@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/frontend/main.qml</file>
+        <file>src/frontend/Config.json</file>
+        <file>src/frontend/Theme.json</file>
+    </qresource>
+</RCC>
