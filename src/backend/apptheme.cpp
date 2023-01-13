@@ -1,9 +1,18 @@
 #include "apptheme.h"
 
-AppTheme::AppTheme(QObject *parent)
-    : QObject{parent}
+AppTheme::AppTheme(Backend *backend, QObject *parent)
+    : QObject{parent}, m_backend(backend)
 {
+    // Load available themes
+    loadThemes();
 
+    // [TODO] Connect to backend settings load
+
+}
+
+AppTheme::~AppTheme()
+{
+    delete m_backend;
 }
 
 void AppTheme::setWindowDimensions(float width, float height)
@@ -19,10 +28,14 @@ void AppTheme::setWindowDimensions(float width, float height)
 
 void AppTheme::selectThemePallette(const QString &palletteName)
 {
+    qDebug() << palletteName << m_pallettes.size();
+
     if(m_pallettes.size() == 0)
         return;
 
     auto pallette = m_pallettes[palletteName];
+
+    qDebug() << pallette["background"].toString();
 
     setThemeName(palletteName);
     setBackgroundColor(pallette["background"].toString());
@@ -245,12 +258,15 @@ void AppTheme::loadThemes()
     QJsonObject themeObj = themeDoc.object();
     QJsonArray pallette = themeObj["pallette"].toArray();
 
+    // qDebug() << themeDoc;
     m_pallettes.clear();
 
     for(const auto &pal : pallette) {
         QJsonObject palObj = pal.toObject();
         QString name = palObj["name"].toString();
         QJsonObject style = palObj["style"].toObject();
+
+        // qDebug() << name << style;
 
         m_pallettes[name] = style;
     }

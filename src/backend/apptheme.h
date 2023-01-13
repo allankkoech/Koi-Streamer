@@ -8,12 +8,15 @@
 #include <QFile>
 #include <QJsonArray>
 
+#include "backend.h"
+
 
 class AppTheme : public QObject
 {
     Q_OBJECT
 public:
-    explicit AppTheme(QObject *parent = nullptr);
+    explicit AppTheme(Backend *backend, QObject *parent = nullptr);
+    ~AppTheme();
 
     // Color Pallettes
     Q_PROPERTY(QString themeName READ themeName WRITE setThemeName NOTIFY themeNameChanged)
@@ -142,6 +145,7 @@ private:
     float m_screenHeight;
 
     QMap<QString, QJsonObject> m_pallettes;
+    Backend *m_backend;
 };
 
 #endif // APPTHEME_H

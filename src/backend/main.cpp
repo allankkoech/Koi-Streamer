@@ -3,6 +3,7 @@
 #include <QQmlContext>
 
 #include "backend.h"
+#include "apptheme.h"
 
 
 int main(int argc, char *argv[])
@@ -14,8 +15,10 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     Backend b;
+    AppTheme theme{&b, nullptr};
 
     engine.rootContext()->setContextProperty("Backend", &b);
+    engine.rootContext()->setContextProperty("Theme", &theme);
 
     const QUrl url(QStringLiteral("qrc:/src/frontend/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

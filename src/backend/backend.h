@@ -14,7 +14,6 @@ public:
     Q_PROPERTY(QString appVersion MEMBER m_version NOTIFY versionChanged)
     Q_PROPERTY(int appVersionCode MEMBER m_versionCode NOTIFY versionCodeChanged)
     Q_PROPERTY(bool isPortrait MEMBER m_isPortrait NOTIFY portraitChanged)
-    Q_PROPERTY(bool isDarkTheme READ isDarkTheme WRITE setIsDarkTheme NOTIFY isDarkThemeChanged)
 
     bool isPortrait() const;
     void setIsPortrait(bool newIsPortrait);
